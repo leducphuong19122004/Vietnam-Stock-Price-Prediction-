@@ -14,6 +14,8 @@ pip install vnstock3
 The dataset is divided into two separate sets: training and testing. The training set includes data from the listing start date to January 02, 2013, the test set includes data from March 2, 2024 to May 31, 2024.
 ## Results
 List of 7 comparison diagrams between real price and predicted price of 7 stocks in VN30 stock group:
-
+![FPT stock](https://github.com/leducphuong19122004/Vietnam-Stock-Price-Prediction-/blob/master/diagram_image/FPT.png)
+![GAS stock](https://github.com/leducphuong19122004/Vietnam-Stock-Price-Prediction-/blob/master/diagram_image/GAS.png)
+![CTG stock](https://github.com/leducphuong19122004/Vietnam-Stock-Price-Prediction-/blob/master/diagram_image/CTG.png)
 
 
