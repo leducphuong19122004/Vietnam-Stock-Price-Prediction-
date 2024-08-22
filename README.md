@@ -1,5 +1,8 @@
 # Vietnam stock price prediction
 This project was developed to predict the future trends of stock prices in the Vietnamese stock market using deep learning. Specifically, I utilized an LSTM model, training it with the price data of 30 stocks from the VN30 index.
+> [!NOTE]  
+> This project is partially referenced from this [paper](https://www.nature.com/articles/s41599-024-02807-x)
+
 ## LSTM model
 The LSTM model will use the data of the previous 60 days to forecast the stock price at the next day. Accordingly, the LSTM model is built with a structure of 4 layers including the following specific coefficients:
 - Layer 1: units = 30, activation = ‘relu’, Dropout(0.1), input shape corresponding to the specific data size of each stock code
