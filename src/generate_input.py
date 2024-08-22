@@ -14,27 +14,27 @@ class InputsGenerator:
 
         min_price = df.open[0]
         max_price = df.open[0]
-        vnindex_price_list = []
+        stock_price_list = []
 
         for i, price in enumerate(df.open):
             if price > max_price:
                 max_price = price
             if price < min_price:
                 min_price = price
-            vnindex_price_list.append(price)
+            stock_price_list.append(price)
 
         # normalize data set, set range (0,1)
-        vnindex_dataset = np.ones((2782, 1))
-        for i, price in enumerate(vnindex_price_list):
-            vnindex_dataset[i] = (price - min_price) / (max_price - min_price)
+        stock_price_dataset = np.ones((len(stock_price_list), 1))
+        for i, price in enumerate(stock_price_list):
+            stock_price_dataset[i] = (price - min_price) / (max_price - min_price)
 
         # the LSTM model will use the data of the previous 60 days
         # to forecast the stock price at the next day.
         x_train = []
         y_train = []
-        for i in range(60, 2782):
-            x_train.append(vnindex_dataset[i-60:i, 0])
-            y_train.append(vnindex_dataset[i, 0])
+        for i in range(60, len(stock_price_list)):
+            x_train.append(stock_price_dataset[i-60:i, 0])
+            y_train.append(stock_price_dataset[i, 0])
 
         x_train = np.array(x_train)
         y_train = np.array(y_train)

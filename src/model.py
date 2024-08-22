@@ -1,6 +1,7 @@
 from keras.api.layers import LSTM, Dense, Dropout, Input
 from keras.api.models import Sequential, Model
 from keras.api.callbacks import ModelCheckpoint, EarlyStopping
+from os import mkdir
 
 class StockPricePredictionModel:
     def __init__(self) -> None:
@@ -25,10 +26,11 @@ class StockPricePredictionModel:
         model.add(Dense(units=1))
         return model
 
-    def train(self, model: Model, x_train, y_train, epochs=100, batch_size=32):
+    def train(self, model: Model, x_train, y_train,stock_code: str, epochs=100, batch_size=32):
+        print(f"[TRAINING] stock code: {stock_code}")
         model.compile(optimizer='adam',loss='mean_squared_error')
-
-        file_path = 'TrainedModel.weights.h5'
+        
+        file_path = f'trained_model/{stock_code}_model.weights.h5'
         model_checkpoint_callback = ModelCheckpoint(filepath=file_path, monitor='loss', verbose=1, save_best_only=True, save_weights_only=True)
         early_stopping = EarlyStopping(monitor='loss', patience=8)
 
